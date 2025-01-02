@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan's Livery Hub</title>
+
+    <style>
+        @font-face {
+            font-family: 'MyCustomFont';
+            src: url('futuraptdemi.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'MyCustomFont1';
+            src: url('Masiku.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'MyCustomFont', sans-serif;
+            margin: 0;
+            background-color: #f0f1f2;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0px 10px 10px 0px rgba(137, 127, 127, 0.685);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Header (Updated) */
+        header {
+            background-color: #f57c00;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .site-name {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #e67000;
+            font-family: 'MyCustomFont1';
+        }
+
+        .site-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2e2d2b;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #221f1f;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+             color: #e67000;
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        /* Left Content - Mods */
+        .left-content {
+            flex: 1 1 60%;
+            max-width: 60%;
+        }
+
+        /* Mod Wrapper for Mod Cards */
+        .mod-wrapper {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+
+        /* Mod Card */
+        .mod-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .mod-card:hover {
+            transform: scale(1.012);
+            background-color: #ffffff;
+            box-shadow: #333;
+        }
+
+        .mod-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 16/9;
+        }
+
+        .mod-card-content {
+            padding: 15px;
+        }
+
+        .mod-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f57c00;
+        }
+
+        .mod-card-content p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .mod-card-content a {
+            display: inline-block;
+            padding: 10px 15px;
+            color: rgb(21, 19, 19);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mod-card-content a:hover {
+            color: #e67000;
+        }
+
+        /* Right Sidebar */
+        .right-sidebar {
+            flex: 1 1 30%;
+            max-width: 30%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            position: sticky;
+            top: 20px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: #f57c00;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            opacity: 0.8;
+        }
+
+        .recent-post {
+            background: #fdf7e3;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .recent-post h4 {
+            font-size: 1.2rem;
+            margin: 0 0 5px;
+            color: #f57c00;
+        }
+
+        .recent-post p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* YouTube Video Section */
+        .youtube-video-section {
+            background: #fdf7e3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .youtube-video-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f57c00;
+        }
+
+        .youtube-video-section iframe {
+            width: 100%;
+            height: 315px;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #f57c00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .site-name {
+                font-size: 2.5rem;
+                color:#e67000
+            }
+
+            .site-subtitle {
+                font-size: 1.2rem;
+                color: #2e2d2b;
+            }
+
+            nav a {
+                font-size: 1rem;
+                color: #e67000;
+                cursor: pointer;
+            }
+
+            nav a:hover {
+                font-size: 1rem;
+                color: #e67000;
+                cursor: pointer;
+            }
+
+            .left-content {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .right-sidebar {
+                flex: 1 1 100%;
+                max-width: 100%;
+                position: relative;
+                height: auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .site-name {
+                font-size: 2.5rem;
+                color: #e67000;
+            }
+
+            .site-subtitle {
+                font-size: 1.2rem;
+                color: #2e2d2b;
+            }
+
+            nav a {
+                font-size: 1rem;
+                color: #e67000;
+                cursor: pointer;
+            }
+
+            nav a:hover {
+                font-size: 1rem;
+                color: #e67000;
+                cursor: pointer;
+            }
+        }
+
+    </style>
+    <style>
+        /* Updated YouTube Video Section */
+        .youtube-video-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: #fdf7e3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            justify-content: space-evenly;
+        }
+    
+        .youtube-video-section h4 {
+            width: 100%;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f57c00;
+            text-align: center;
+        }
+    
+        .youtube-video-section iframe {
+            flex: 1 1 30%; /* Adjust the width of each video */
+            min-width: 280px; /* Minimum width for responsiveness */
+            max-width: 100%;
+            height: auto; /* Fixed height for videos */
+            border-radius: 5px;
+            aspect-ratio: 16/9;
+        }
+    
+        /* Media Queries for Smaller Screens */
+        @media screen and (max-width: 768px) {
+            .youtube-video-section iframe {
+                flex: 1 1 100%; /* Stack videos vertically */
+                height: auto; /* Full height for mobile */
+            }
+        }
+        .h{
+            font-size: 2rem;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .h0{
+            font-size: 4rem;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .p{
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a class="site-name">Karunadu Mod Developer's</a>
+        <p class="site-subtitle">KMD Mods by Rohan G</p>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#mods">Mods</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#upcoming-projects">Upcoming Projects</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Left Content -->
+        <div class="left-content">
+            <div class="mod-wrapper">
+                <div class="h">HOME</div>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search Mods..." oninput="searchMods()">
+                </div>
+
+                <div class="mod-card" data-title="NWKRTC Eicher BS-III Mod">
+                    <img src="assets/images/nwkrtc-eicher-bs3.jpg" alt="Mod Image">
+                    <div class="mod-card-content">
+                        <h3>NWKRTC Eicher BS-III Mod HD</h3>
+                        <p>Have you ever wanted to drive a bus that feels as real as the ones you see cruising through Karnataka? Download the Eicher NWKRTC BS-3 Bus mod for a lifelike experience with detailed interiors and smooth handling!</p>
+                        <a href="mods/NWKRTC-Eicher-BS-III.html.html">>> Read More</a>
+                    </div>
+                </div>
+                <div class="mod-card" data-title="Prakash Ashwamedha Classic BS-VI Mod">
+                    <img src="assets/images/prakash.jpg" alt="Mod Image">
+                    <div class="mod-card-content">
+                        <h3>Prakash Ashwamedha Classic BS-VI Mod</h3>
+                        <p>Have you ever wanted to drive a bus that captures the essence of classic Indian travel? Download the Prakash Ashwamedha Classic Bus mod for a nostalgic, smooth ride with realistic details and timeless design!</p>
+                        <a href="mods/prakash-ashwamedha.html">>> Read More</a>
+                    </div>
+                </div>
+
+                <div class="mod-card" data-title="KMS Ashwamedha Classic BS-VI Mod">
+                    <img src="assets/images/kms.jpg" alt="Mod Image">
+                    <div class="mod-card-content">
+                        <h3>KMS Ashwamedha Classic BS-VI Mod</h3>
+                        <p>Ever dreamt of driving a bus with a classic touch of Indian road travel? Download the KMS Ashwamedha Classic Bus mod for a nostalgic experience with authentic design and smooth handling!</p>
+                        <a href="mods/KMS-Ashwamedha-BS-VI.html">>> Read More</a>
+                    </div>
+                </div>
+
+                <div class="mod-card" data-title="KSRTC KMS Built BS-VI Mod Front Door">
+                    <img src="assets/images/frontdoor.jpg" alt="Mod Image">
+                    <div class="mod-card-content">
+                        <h3>KSRTC KMS Built BS-VI Mod Front Door</h3>
+                        <p>Experience the future of bus travel with the KSRTC BS-6 KMS Built Front Door mod! Download now for a sleek, modern design and realistic driving experience with advanced features and smooth handling!</p>
+                        <a href="mods/KMS-BS-VI-FD.html">>> Read More</a>
+                    </div>
+                </div>
+                <div class="mod-card" data-title="KSRTC KMS Built BS-VI Mod Back Door">
+                    <img src="assets/images/backdoor.jpg" alt="Mod Image">
+                    <div class="mod-card-content">
+                        <h3>KSRTC KMS Built BS-VI Mod Back Door</h3>
+                        <p>Experience the future of bus travel with the KSRTC BS-6 KMS Built Back Door mod! Download now for a sleek, modern design and realistic driving experience with advanced features and smooth handling!</p>
+                        <a href="mods/KMS-BS-VI-BD.html">>> Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="ho">Recent Posts</div>    
+            <div class="recent-post">
+                <h4>NWKRTC-Eicher-BS-III</h4>
+                <p>New Year Offer.</br>Price drop to RS.16/- </br>Offer valid till 5th jan</p>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- YouTube Video Section -->
+    <div class="youtube-video-section">
+        <iframe src="https://www.youtube.com/embed/EW5a38IirgA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/bPl_F5WGhYY?si=h6S-SeomEO0rBhJi" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/5qVF-6gxb-c?si=0-e9PpPsW4lhYEW_" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Karunadu Mod Developers. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function searchMods() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const modCards = document.querySelectorAll('.mod-card');
+            let found = false;
+
+            modCards.forEach(card => {
+                const title = card.dataset.title.toLowerCase();
+                // If the title matches the search term
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';  // Show the card
+                    found = true;
+                } else {
+                    card.style.display = 'none';  // Hide the card
+                }
+            });
+
+            // If no results were found, you can show a message or do something else here
+            if (!found && searchTerm !== '') {
+                alert("No mods found for your search term.");
+            }
+        }
+    </script>
+</body>
+</html>
